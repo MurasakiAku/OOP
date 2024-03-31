@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static WpfApp2.BD;
 
 namespace WpfApp2
 {
@@ -38,7 +39,15 @@ namespace WpfApp2
 
         private void BackPage_Click(object sender, RoutedEventArgs e)
         {
-            WellcomePage wellcome = new WellcomePage();
+
+            MessageBoxResult message = MessageBox.Show("Хотите выйти?", "Выход", MessageBoxButton.YesNo);
+            if (message == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
+            else if (message == MessageBoxResult.No)
+            {
+            }
             
         }
 
@@ -46,5 +55,7 @@ namespace WpfApp2
         {
             
         }
+
+        
     }
 }

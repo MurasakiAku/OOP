@@ -18,7 +18,7 @@ namespace WpfApp2
     /// <summary>
     /// Логика взаимодействия для WellcomePage.xaml
     /// </summary>
-    public partial class WellcomePage : Page
+    public partial class WellcomePage : Window
     {
         public WellcomePage()
         {
