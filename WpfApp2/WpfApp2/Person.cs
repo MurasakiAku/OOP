@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace WpfApp2
 {
-    class Person
+    public class Person
     {
 
         //[Key]
-        public int idPerson { get; set; }
+        public int PersonId { get; set; }
 
-        public string name { get; set; }
-        public int idPost { get; set; }
-        public int idSpecialization { get; set; }
-        public int idDepartment { get; set; }
+        public string Name { get; set; }
+        public int PostId { get; set; }
+        public int SpecializationId { get; set; }
+        public int DepartmentId { get; set; }
 
         public Person() { }
 
         public Person(string name)
         {
-            this.name = name;
+            Name = name;
         }
     }
 }
