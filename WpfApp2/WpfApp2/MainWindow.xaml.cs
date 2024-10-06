@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static WpfApp2.BD;
+//using static WpfApp2.BD;
 
 namespace WpfApp2
 {
@@ -21,9 +21,18 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
+        AppContex db;
         public MainWindow()
         {
             InitializeComponent();
+
+            db = new AppContex();
+            //List<Person> persons = db.Persons.ToList();
+            //string str = "";
+            //foreach (Person person in persons)
+            //    str += "ФИО " + person.name + " | ";
+
+           
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -53,9 +62,32 @@ namespace WpfApp2
 
         private void SavePerson_Click(object sender, RoutedEventArgs e)
         {
-            
+            string name = textBoxNamePerson.Text.Trim();
+            //string FirstName = textBoxNamePerson.Text.Trim();
+            //DateTime DateBD = textBoxDB.Text.Trim();
+            //string Passport = textBoxPassport.Text.Trim();
+            //string Gender = textBoxGender.Text.Trim();
+            //string City = textBoxCity.Text.Trim();
+            //string Street = textBoxStreet.Text.Trim();
+            //string House = textBoxHouse.Text.Trim();
+            //string Number = textBoxNumberAppartment.Text.Trim();
+
+            Person person = new Person(name);
+            db.Persons.Add(person);
+            db.SaveChanges();
         }
 
-        
+        private void TextBoxNamePerson_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //BD bD = new BD();
+            //db.bDs.Add();
+        }
+
+        private void TextBoxDB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //BD bD = new BD(DateBD);
+            //db.bDs.Add();
+
+        }
     }
 }

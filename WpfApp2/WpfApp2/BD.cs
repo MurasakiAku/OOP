@@ -9,26 +9,26 @@ namespace WpfApp2
 {
     class BD
     {
-        public class Person
-        {
-            public int IdPerson { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public int IdPost { get; set; }
-            public int IdSpecialization { get; set; }
-            public int IdDepartment { get; set; }
+        //public class Person
+        //{
+            //public int IdPerson { get; set; }
+            //public string FirstName { get; set; }
+            //public string LastName { get; set; }
+            //public int IdPost { get; set; }
+            //public int IdSpecialization { get; set; }
+            //public int IdDepartment { get; set; }
 
-            public Person(string FirstName, string LastName)
-            {
-                this.FirstName = FirstName;
-                this.LastName = LastName;
-            }
-            public Person()
-            {
-                FirstName = "Ivan";
-                LastName = "Ivanov";
-            }
-        }
+            //public Person(string FirstName, string LastName)
+            //{
+            //    this.FirstName = FirstName;
+            //    this.LastName = LastName;
+            //}
+            //public Person()
+            //{
+            //    FirstName = "Ivan";
+            //    LastName = "Ivanov";
+            //}
+        //}
 
 
         public class PersonInfo

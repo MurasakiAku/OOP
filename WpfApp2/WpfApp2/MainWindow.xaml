@@ -16,14 +16,14 @@
                     <Button x:Name="SavePerson" Content="Сохранить" Height="40" Width="210" HorizontalAlignment="Center"  Click="SavePerson_Click"></Button>
                     <Button x:Name="BackPage" Content="На главную" Height="40" Width="210" HorizontalAlignment="Right" Click="BackPage_Click"></Button>
                 </Grid>
-                <TextBox materialDesign:HintAssist.Hint="ФИО" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
-                <TextBox materialDesign:HintAssist.Hint="Дата рождения" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20" />
-                <TextBox materialDesign:HintAssist.Hint="Паспорт" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
-                <TextBox materialDesign:HintAssist.Hint="Пол" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
-                <TextBox materialDesign:HintAssist.Hint="Город" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
-                <TextBox materialDesign:HintAssist.Hint="Улица" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
-                <TextBox materialDesign:HintAssist.Hint="Дом" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
-                <TextBox materialDesign:HintAssist.Hint="Квартира" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
+                <TextBox x:Name="textBoxNamePerson" materialDesign:HintAssist.Hint="ФИО" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20" TextChanged="TextBoxNamePerson_TextChanged"/>
+                <TextBox x:Name="textBoxDB" materialDesign:HintAssist.Hint="Дата рождения" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20" TextChanged="TextBoxDB_TextChanged" />
+                <TextBox x:Name="textBoxPassport" materialDesign:HintAssist.Hint="Паспорт" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
+                <TextBox x:Name="textBoxGender" materialDesign:HintAssist.Hint="Пол" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
+                <TextBox x:Name="textBoxCity" materialDesign:HintAssist.Hint="Город" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
+                <TextBox x:Name="textBoxStreet" materialDesign:HintAssist.Hint="Улица" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
+                <TextBox x:Name="textBoxHouse" materialDesign:HintAssist.Hint="Дом" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
+                <TextBox x:Name="textBoxNumberAppartment" materialDesign:HintAssist.Hint="Квартира" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="20"/>
             </StackPanel>
             
         </Border>

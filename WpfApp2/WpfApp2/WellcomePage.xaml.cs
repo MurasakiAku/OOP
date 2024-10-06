@@ -20,9 +20,12 @@ namespace WpfApp2
     /// </summary>
     public partial class WellcomePage : Window
     {
+        AppContex db;
         public WellcomePage()
         {
             InitializeComponent();
+
+            db = new AppContex();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,5 +46,6 @@ namespace WpfApp2
             EditForm editForm = new EditForm();
             editForm.Show();
         }
+        
     }
 }
