@@ -1,11 +1,10 @@
-﻿@model Mendoukusai.Models.Category
+﻿@model Mendoukusai.Models.ApplicationType
 
 <form method="post" asp-action="Create">
 	<div class="border p-3">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 		<div class="form-group row">
 			<h2 class="text-info pl-3">
-				Add Category
+				Add Application Type
 			</h2>
 		</div>
         <div class="row">
@@ -20,16 +19,7 @@
                     </div>
 
                 </div>
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for = "DisplayOrder"></label>
-                    </div>
-                    <div class="col-8">
-                        <input asp-for="DisplayOrder" class="form-control" />
-                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
-                    </div>
-
-                </div>
+                
                 <div class="form-group row">
                     <div class="col-8 offset-4 row">
 
@@ -48,7 +38,8 @@
         </div>
 	</div>
 </form>
-@section Scripts{
-    @{<partial name ="_ValidationScriptsPartial" />}
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
 }
-

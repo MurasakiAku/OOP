@@ -2,32 +2,51 @@
 using Mendoukusai.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mendoukusai.Controllers
 {
-    public class CategoryController : Controller
+    public class ProductController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        public ProductController(ApplicationDbContext db)
         {
             _db = db;
         }
         public IActionResult Index()
         {
-            IEnumerable<Category> objList = _db.Category;
+            IEnumerable<Product> objList = _db.Product;
+            foreach (var obj in objList)
+            {
+                obj.Category = _db.Category.FirstOrDefault(u=>u.Id==obj.CategoryId);
+            };
+
             return View(objList);
         }
 
-        //Get-create
-		public IActionResult Create()
+        //Get-upsert
+		public IActionResult Upsert(int? id)
 		{
-			return View();
+            Product product = new Product();
+            if (id == null)
+            {
+                return View(product);
+            }
+            else
+            {
+                product = _db.Product.Find(id);
+                if (product == null) 
+                {
+                    return NotFound();
+                }
+                return View(product);
+            }
 		}
 
-        //Post-create
+        //Post-upsert
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category obj)
+        public IActionResult Upsert(Category obj)
         {
             if(ModelState.IsValid) 
             {
@@ -38,37 +57,7 @@ namespace Mendoukusai.Controllers
             return View(obj);
             
         }
-		//Get-edit
-		public IActionResult Edit(int? id)
-		{
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            var obj = _db.Category.Find(id);
-            if (obj == null) 
-            {
-                return NotFound();
-            }
-			return View(obj);
-		}
-
-     
-      
-        //Post-edit
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(Category obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Category.Update(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(obj);
-
-        }
+		
         //Get-delete
         public IActionResult Delete(int? id)
         {
