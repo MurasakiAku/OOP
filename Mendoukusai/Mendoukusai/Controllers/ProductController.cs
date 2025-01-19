@@ -1,6 +1,8 @@
 ﻿using Mendoukusai.Data;
 using Mendoukusai.Models;
+using Mendoukusai.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,19 +29,36 @@ namespace Mendoukusai.Controllers
         //Get-upsert
 		public IActionResult Upsert(int? id)
 		{
-            Product product = new Product();
+            //IEnumerable<SelectListItem> CategoryDropDown = _db.Category.Select(i => new SelectListItem
+            //{
+            //    Text = i.Name,
+            //    Value = i.Id.ToString()
+            //});
+            //ViewBag.CategoryDropDown = CategoryDropDown;
+            //Product product = new Product();
+
+            ProductVM productVM = new ProductVM()
+            {
+                Product = new Product(),
+                CategorySelectList = _db.Category.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
+
             if (id == null)
             {
-                return View(product);
+                return View(productVM);
             }
             else
             {
-                product = _db.Product.Find(id);
-                if (product == null) 
+                productVM.Product = _db.Product.Find(id);
+                if (productVM.Product == null) 
                 {
                     return NotFound();
                 }
-                return View(product);
+                return View(productVM);
             }
 		}
 

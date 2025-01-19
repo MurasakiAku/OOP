@@ -1,29 +1,26 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using System.ComponentModel.DataAnnotations.Schema;
-//using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace WpfApp2
+namespace WpfApp1.Models
 {
     public class Person
     {
 
-        //[Key]
-        public int PersonId { get; set; }
+        [Key]
+        public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
         public int PostId { get; set; }
         public int SpecializationId { get; set; }
         public int DepartmentId { get; set; }
 
-        public Person() { }
 
-        public Person(string name)
-        {
-            Name = name;
-        }
     }
 }
