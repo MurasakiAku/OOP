@@ -115,6 +115,7 @@
     <Compile Include="Migrations\202410060607518_Initial migration.Designer.cs">
       <DependentUpon>202410060607518_Initial migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="WellcomePage.xaml.cs">
       <DependentUpon>WellcomePage.xaml</DependentUpon>

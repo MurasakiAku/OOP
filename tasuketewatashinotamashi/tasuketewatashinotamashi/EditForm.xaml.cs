@@ -10,30 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace tasuketewatashinotamashi
 {
     /// <summary>
-    /// Логика взаимодействия для BusinessTripsForm.xaml
+    /// Логика взаимодействия для EditForm.xaml
     /// </summary>
-    public partial class BusinessTripsForm : Window
+    public partial class EditForm : Page
     {
-        public BusinessTripsForm()
+        public EditForm()
         {
             InitializeComponent();
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-
+            //MessageBoxResult message = MessageBox.Show("Хотите выйти?", "Выход", MessageBoxButton.YesNo);
+            //if (message == MessageBoxResult.Yes)
+            //{
+            //    this.closed();
+            //}
+            //else if (message == MessageBoxResult.No)
+            //{
+            //}
+            
         }
     }
 }
