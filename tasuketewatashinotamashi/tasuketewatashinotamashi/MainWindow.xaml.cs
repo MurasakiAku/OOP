@@ -22,15 +22,21 @@ namespace tasuketewatashinotamashi
     /// </summary>
     public partial class MainWindow : Window
     {
-        MyDbContext MyDbContext = new MyDbContext();
-        public MainWindow()
+        Person _person;
+        MyDbContext _db;
+        public MainWindow(MyDbContext db,  Person person)
         {
+            _person = person;
+            _db= db;
             InitializeComponent();
-            MyDbContext.Database.EnsureCreated();
-            MyDbContext.Persons.Load();
-            MyDbContext.Persons.Local.ToObservableCollection();
-            
-
+            if (person != null ) 
+            {
+                textBoxFirstNamePerson.Text = person.FirstName;
+                textBoxLastNamePerson.Text = person.LastName;
+                textBoxAndNamePerson.Text = person.AndName;
+                textBoxPosition.Text = person.Position;
+                textBoxSalaty.Text = person.Salary.ToString();
+            }
         }
         private void BackPage_Click(object sender, RoutedEventArgs e)
         {
@@ -48,20 +54,26 @@ namespace tasuketewatashinotamashi
 
         private void SavePerson_Click(object sender, RoutedEventArgs e)
         {
-            
+            Person _person = new Person();
+            decimal salary = Convert.ToInt32(textBoxSalaty.Text);
+            _person.FirstName = textBoxFirstNamePerson.Text;
+            _person.LastName = textBoxLastNamePerson.Text;
+            _person.AndName = textBoxAndNamePerson.Text;
+            _person.Position = textBoxPosition.Text;
+            _person.Salary = salary;
+            _db.Persons.Add(_person);
+            _db.SaveChanges();
+
+
         }
 
         private void TextBoxNamePerson_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //BD bD = new BD();
-            //db.bDs.Add();
+         
         }
 
         private void TextBoxDB_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //BD bD = new BD(DateBD);
-            //db.bDs.Add();
-
         }
     }
 }

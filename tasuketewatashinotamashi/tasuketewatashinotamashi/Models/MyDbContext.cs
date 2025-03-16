@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using tasuketewatashinotamashi.Models;
 
-namespace tasuketewatashinotamashi
+namespace tasuketewatashinotamashi.Models
 {
-    class MyDbContext : DbContext
+    public class MyDbContext : DbContext
     {
         public DbSet<Person> Persons { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

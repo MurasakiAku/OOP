@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using tasuketewatashinotamashi.Models;
 
 namespace tasuketewatashinotamashi
 {
@@ -20,16 +21,17 @@ namespace tasuketewatashinotamashi
     /// </summary>
     public partial class WellcomePage : Page
     {
+        MyDbContext db = new MyDbContext();
         public WellcomePage()
         {
             InitializeComponent();
+            db.Persons.ToArray();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-
+            MainWindow window = new MainWindow(db, null);
+            window.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

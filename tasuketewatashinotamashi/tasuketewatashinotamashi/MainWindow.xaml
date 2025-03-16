@@ -16,7 +16,7 @@
                     <Button x:Name="SavePerson" Content="Сохранить" Height="40" Width="210" HorizontalAlignment="Left"  Click="SavePerson_Click" Margin="10,0,0,0" FontSize="15"></Button>
                     <Button x:Name="BackPage" Content="На главную" Height="40" Width="210" HorizontalAlignment="Right" Click="BackPage_Click" FontSize="15"></Button>
                 </Grid>
-                <TextBox x:Name="textBoxPersonNumber" Text="Код сотрудника"  FontSize="20" TextChanged="TextBoxNamePerson_TextChanged" Margin="10"/>
+                
                 <TextBox x:Name="textBoxFirstNamePerson" Text="Фамилия"  FontSize="20" TextChanged="TextBoxNamePerson_TextChanged" Margin="10"/>
                 <TextBox x:Name="textBoxLastNamePerson" Text="Имя"  FontSize="20" TextChanged="TextBoxNamePerson_TextChanged" Margin="10"/>
                 <TextBox x:Name="textBoxAndNamePerson" Text="Отчество"  FontSize="20" TextChanged="TextBoxNamePerson_TextChanged" Margin="10"/>
