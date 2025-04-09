@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,8 +43,7 @@ namespace tasuketewatashinotamashi
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //EditForm editForm = new EditForm();
-            //editForm.Show();
+           
         }
     }
 }

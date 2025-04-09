@@ -17,8 +17,10 @@ namespace tasuketewatashinotamashi.Models
         public string AndName { get; set; }
         public string Position { get; set; }
         public decimal Salary { get; set; }
-       
 
-        
+        public List<BusinessTrip> BusinessTrips { get; set; } = new();
+
+
+
     }
 }
