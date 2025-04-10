@@ -10,24 +10,53 @@
         d:DesignHeight="600" d:DesignWidth="900"
         Title="MainWindow">
     <Grid>
-        <Border MinWidth="500" Margin="20 0" VerticalAlignment="Top" MaxWidth="1200" Background="White">
-            <StackPanel>
-                <Grid Margin="0 20" VerticalAlignment="Top">
-                    <Button x:Name="SavePerson" Content="Сохранить" Height="40" Width="210" HorizontalAlignment="Left"  Click="SavePerson_Click" Margin="10,0,0,0" FontSize="15"></Button>
-                    <Button x:Name="BackPage" Content="На главную" Height="40" Width="210" HorizontalAlignment="Right" Click="BackPage_Click" FontSize="15"></Button>
-                </Grid>
-                
-                <TextBox x:Name="textBoxFirstNamePerson" Text="Фамилия"  FontSize="20" TextChanged="TextBoxNamePerson_TextChanged" Margin="10"/>
-                <TextBox x:Name="textBoxLastNamePerson" Text="Имя"  FontSize="20" TextChanged="TextBoxNamePerson_TextChanged" Margin="10"/>
-                <TextBox x:Name="textBoxAndNamePerson" Text="Отчество"  FontSize="20" TextChanged="TextBoxNamePerson_TextChanged" Margin="10"/>
-                <TextBox x:Name="textBoxPosition" Text="Должность" FontSize="20" Margin="10"/>
-                <TextBox x:Name="textBoxSalaty" Text="Заработная плата" FontSize="20" Margin="10"/>
-            </StackPanel>
-
-        </Border>
-
-
-
-
+        <TabControl>
+            <TabItem Header="Сотрудники">
+                <StackPanel>
+                    <Button Content="Добавить сотрудника" Click="AddPerson_Click" Margin="5"/>
+                    <DataGrid x:Name="PersonGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                            <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                            <DataGridTextColumn Header="Должность" Binding="{Binding Position}"/>
+                            <DataGridTemplateColumn Header="Действия">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="✏️" Click="EditPerson_Click" Tag="{Binding Id}" Margin="2"/>
+                                            <Button Content="❌" Click="DeletePerson_Click" Tag="{Binding Id}" Margin="2"/>
+                                            <Button Content="✈️" Click="ShowTrips_Click" Tag="{Binding Id}" Margin="2"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Командировки">
+                <StackPanel>
+                    <Button Content="Добавить командировку" Click="AddTrip_Click" Margin="5"/>
+                    <DataGrid x:Name="TripsGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Сотрудник" Binding="{Binding Person.LastName}"/>
+                            <DataGridTextColumn Header="Город" Binding="{Binding City}"/>
+                            <DataGridTextColumn Header="Дата начала" Binding="{Binding StartDate, StringFormat=d}"/>
+                            <DataGridTextColumn Header="Дата окончания" Binding="{Binding EndDate, StringFormat=d}"/>
+                            <DataGridTemplateColumn Header="Действия">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="✏️" Click="EditTrip_Click" Tag="{Binding Id}" Margin="2"/>
+                                            <Button Content="❌" Click="DeleteTrip_Click" Tag="{Binding Id}" Margin="2"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
