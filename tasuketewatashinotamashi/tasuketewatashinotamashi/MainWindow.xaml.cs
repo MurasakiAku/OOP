@@ -23,9 +23,11 @@ namespace tasuketewatashinotamashi
     public partial class MainWindow : Window
     {
         Person _person;
+        BusinessTrip _businesstrip;
         MyDbContext _db;
         public MainWindow(MyDbContext db,  Person person)
         {
+            _businesstrip = businesstrip;
             _person = person;
             _db= db;
             InitializeComponent();
@@ -40,7 +42,7 @@ namespace tasuketewatashinotamashi
 
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            var form = new PersonForm();
+            var form = new PersonForm(_db, _person);
             if (form.ShowDialog() == true)
             {
                 _db.Persons.Add(form.Person);
@@ -53,7 +55,7 @@ namespace tasuketewatashinotamashi
         {
             var id = (int)((Button)sender).Tag;
             var persons = _db.Persons.Find(id);
-            var form = new PersonForm(persons);
+            var form = new PersonForm(_db.Persons.ToList());
             if (form.ShowDialog() == true)
             {
                 _db.SaveChanges();
@@ -89,7 +91,7 @@ namespace tasuketewatashinotamashi
 
         private void AddTrip_Click(object sender, RoutedEventArgs e)
         {
-            var form = new BusinessTripForm(_db.Persons.ToList());
+            var form = new BusinessTripForm(_db.BusinessTrips.ToList());
             if (form.ShowDialog() == true)
             {
                 _db.BusinessTrips.Add(form.Trip);
@@ -102,7 +104,7 @@ namespace tasuketewatashinotamashi
         {
             var id = (int)((Button)sender).Tag;
             var trip = _db.BusinessTrips.Find(id);
-            var form = new BusinessTripForm(trip, _db.Persons.ToList());
+            var form = new BusinessTripForm(trip, _db.BusinessTrips.ToList());
             if (form.ShowDialog() == true)
             {
                 _db.SaveChanges();

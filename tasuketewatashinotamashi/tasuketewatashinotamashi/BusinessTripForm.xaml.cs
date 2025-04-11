@@ -18,29 +18,27 @@ using tasuketewatashinotamashi.Models;
 namespace tasuketewatashinotamashi
 {
     /// <summary>
-    /// Логика взаимодействия для PersonForm.xaml
+    /// Логика взаимодействия для BusinessTripForm.xaml
     /// </summary>
-    public partial class PersonForm : Window
+    public partial class BusinessTripForm : Window
     {
-        public Person Person { get; private set; }
-        Person _person;
+        public BusinessTrip BusinessTrip { get; private set; }
+        BusinessTrip _businesstrip;
         MyDbContext _db;
-        public PersonForm(MyDbContext db, Person person)
+       
+        public BusinessTripForm(MyDbContext db, BusinessTrip businessTrip)
         {
             _db = db;
             InitializeComponent();
-            Person = new Person();
+            BusinessTrip = new BusinessTrip();
         }
 
-       
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(Person.LastName) ||
-                string.IsNullOrWhiteSpace(Person.FirstName) ||
-                string.IsNullOrWhiteSpace(Person.AndName) ||
+            if (string.IsNullOrWhiteSpace(BusinessTrip.City) ||
+                string.IsNullOrWhiteSpace(BusinessTrip.Purpose))
                 
-                string.IsNullOrWhiteSpace(Person.Position)) 
-               
+
             {
                 MessageBox.Show("Заполните обязательные поля!");
                 return;
@@ -55,6 +53,5 @@ namespace tasuketewatashinotamashi
             DialogResult = false;
             Close();
         }
-       
     }
 }
