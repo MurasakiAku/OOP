@@ -26,9 +26,10 @@ namespace tasuketewatashinotamashi
         BusinessTrip _businesstrip;
         MyDbContext _db;
        
-        public BusinessTripForm(MyDbContext db, BusinessTrip businessTrip)
+        public BusinessTripForm(MyDbContext db, BusinessTrip businesstrip)
         {
             _db = db;
+            _businesstrip = businesstrip;
             InitializeComponent();
             BusinessTrip = new BusinessTrip();
         }

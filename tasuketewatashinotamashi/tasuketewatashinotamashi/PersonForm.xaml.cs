@@ -27,6 +27,7 @@ namespace tasuketewatashinotamashi
         MyDbContext _db;
         public PersonForm(MyDbContext db, Person person)
         {
+            _person = person;
             _db = db;
             InitializeComponent();
             Person = new Person();

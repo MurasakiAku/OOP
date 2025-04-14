@@ -22,10 +22,13 @@ namespace tasuketewatashinotamashi
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        public Person Person { get; private set; }
+        public BusinessTrip BusinessTrip { get; private set; }
         Person _person;
         BusinessTrip _businesstrip;
         MyDbContext _db;
-        public MainWindow(MyDbContext db,  Person person)
+        public MainWindow(MyDbContext db, Person person, BusinessTrip businesstrip)
         {
             _businesstrip = businesstrip;
             _person = person;
@@ -40,9 +43,9 @@ namespace tasuketewatashinotamashi
             TripsGrid.ItemsSource = _db.BusinessTrips.Include(t => t.Person).ToList();
         }
 
-        private void AddEmployee_Click(object sender, RoutedEventArgs e)
+        private void AddPerson_Click(object sender, RoutedEventArgs e)
         {
-            var form = new PersonForm(_db, _person);
+            var form = new PersonForm();
             if (form.ShowDialog() == true)
             {
                 _db.Persons.Add(form.Person);
@@ -55,7 +58,7 @@ namespace tasuketewatashinotamashi
         {
             var id = (int)((Button)sender).Tag;
             var persons = _db.Persons.Find(id);
-            var form = new PersonForm(_db.Persons.ToList());
+            var form = new PersonForm(persons);
             if (form.ShowDialog() == true)
             {
                 _db.SaveChanges();
@@ -63,7 +66,7 @@ namespace tasuketewatashinotamashi
             }
         }
 
-        private void DeleteEmployee_Click(object sender, RoutedEventArgs e)
+        private void DeletePerson_Click(object sender, RoutedEventArgs e)
         {
             var id = (int)((Button)sender).Tag;
             var persons= _db.Persons.Include(e => e.BusinessTrips).First(e => e.Id == id);
@@ -82,13 +85,7 @@ namespace tasuketewatashinotamashi
             }
         }
 
-        private void ShowTrips_Click(object sender, RoutedEventArgs e)
-        {
-            var id = (int)((Button)sender).Tag;
-            var persons = _db.Persons.Find(id);
-            new PersonTripsWindow(persons).ShowDialog();
-        }
-
+        
         private void AddTrip_Click(object sender, RoutedEventArgs e)
         {
             var form = new BusinessTripForm(_db.BusinessTrips.ToList());
