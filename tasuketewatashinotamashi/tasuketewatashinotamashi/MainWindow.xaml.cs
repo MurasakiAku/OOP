@@ -34,93 +34,93 @@ namespace tasuketewatashinotamashi
             _person = person;
             _db= db;
             InitializeComponent();
-            LoadData();
+            //LoadData();
 
         }
-        private void LoadData()
-        {
-            PersonGrid.ItemsSource = _db.Persons.ToList();
-            TripsGrid.ItemsSource = _db.BusinessTrips.Include(t => t.Person).ToList();
-        }
+        ////private void LoadData()
+        ////{
+        ////    PersonGrid.ItemsSource = _db.Persons.ToList();
+        ////    TripsGrid.ItemsSource = _db.BusinessTrips.Include(t => t.Person).ToList();
+        ////}
 
-        private void AddPerson_Click(object sender, RoutedEventArgs e)
-        {
-            var form = new PersonForm();
-            if (form.ShowDialog() == true)
-            {
-                _db.Persons.Add(form.Person);
-                _db.SaveChanges();
-                LoadData();
-            }
-        }
+        //private void AddPerson_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //var form = new PersonForm();
+        //    //if (form.ShowDialog() == true)
+        //    //{
+        //    //    _db.Persons.Add(form.Person);
+        //    //    _db.SaveChanges();
+        //    //    LoadData();
+        //    //}
+        //}
 
-        private void EditPerson_Click(object sender, RoutedEventArgs e)
-        {
-            var id = (int)((Button)sender).Tag;
-            var persons = _db.Persons.Find(id);
-            var form = new PersonForm(persons);
-            if (form.ShowDialog() == true)
-            {
-                _db.SaveChanges();
-                LoadData();
-            }
-        }
+        //private void EditPerson_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //var id = (int)((Button)sender).Tag;
+        //    //var persons = _db.Persons.Find(id);
+        //    //var form = new PersonForm(persons);
+        //    //if (form.ShowDialog() == true)
+        //    //{
+        //    //    _db.SaveChanges();
+        //    //    LoadData();
+        //    //}
+        //}
 
-        private void DeletePerson_Click(object sender, RoutedEventArgs e)
-        {
-            var id = (int)((Button)sender).Tag;
-            var persons= _db.Persons.Include(e => e.BusinessTrips).First(e => e.Id == id);
+        //private void DeletePerson_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var id = (int)((Button)sender).Tag;
+        //    var persons = _db.Persons.Include(e => e.BusinessTrips).First(e => e.Id == id);
 
-            if (persons.BusinessTrips.Any())
-            {
-                MessageBox.Show("Нельзя удалить сотрудника с командировками!");
-                return;
-            }
+        //    if (persons.BusinessTrips.Any())
+        //    {
+        //        MessageBox.Show("Нельзя удалить сотрудника с командировками!");
+        //        return;
+        //    }
 
-            if (MessageBox.Show("Удалить сотрудника?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                _db.Persons.Remove(persons);
-                _db.SaveChanges();
-                LoadData();
-            }
-        }
+        //    if (MessageBox.Show("Удалить сотрудника?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        //    {
+        //        _db.Persons.Remove(persons);
+        //        _db.SaveChanges();
+        //        LoadData();
+        //    }
+        //}
 
-        
-        private void AddTrip_Click(object sender, RoutedEventArgs e)
-        {
-            var form = new BusinessTripForm(_db.BusinessTrips.ToList());
-            if (form.ShowDialog() == true)
-            {
-                _db.BusinessTrips.Add(form.Trip);
-                _db.SaveChanges();
-                LoadData();
-            }
-        }
 
-        private void EditTrip_Click(object sender, RoutedEventArgs e)
-        {
-            var id = (int)((Button)sender).Tag;
-            var trip = _db.BusinessTrips.Find(id);
-            var form = new BusinessTripForm(trip, _db.BusinessTrips.ToList());
-            if (form.ShowDialog() == true)
-            {
-                _db.SaveChanges();
-                LoadData();
-            }
-        }
+        //private void AddTrip_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //var form = new BusinessTripForm(_db.BusinessTrips.ToList());
+        //    //if (form.ShowDialog() == true)
+        //    //{
+        //    //    _db.BusinessTrips.Add(form.Trip);
+        //    //    _db.SaveChanges();
+        //    //    LoadData();
+        //    //}
+        //}
 
-        private void DeleteTrip_Click(object sender, RoutedEventArgs e)
-        {
-            var id = (int)((Button)sender).Tag;
-            var trip = _db.BusinessTrips.Find(id);
+        //private void EditTrip_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //var id = (int)((Button)sender).Tag;
+        //    //var trip = _db.BusinessTrips.Find(id);
+        //    //var form = new BusinessTripForm(trip, _db.BusinessTrips.ToList());
+        //    //if (form.ShowDialog() == true)
+        //    //{
+        //    //    _db.SaveChanges();
+        //    //    LoadData();
+        //    //}
+        //}
 
-            if (MessageBox.Show("Удалить командировку?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                _db.BusinessTrips.Remove(trip);
-                _db.SaveChanges();
-                LoadData();
-            }
-        }
+        //private void DeleteTrip_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var id = (int)((Button)sender).Tag;
+        //    var trip = _db.BusinessTrips.Find(id);
+
+        //    if (MessageBox.Show("Удалить командировку?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        //    {
+        //        _db.BusinessTrips.Remove(trip);
+        //        _db.SaveChanges();
+        //        LoadData();
+        //    }
+        //}
     }
-    
+
 }

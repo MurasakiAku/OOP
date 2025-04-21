@@ -10,7 +10,7 @@
         d:DesignHeight="600" d:DesignWidth="900"
         Title="MainWindow">
     <Grid>
-        <TabControl>
+        <!--<TabControl>
             <TabItem Header="Сотрудники">
                 <StackPanel>
                     <Button Content="Добавить сотрудника" Click="AddPerson_Click" Margin="5"/>
@@ -23,9 +23,9 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Content="✏️" Click="EditPerson_Click" Tag="{Binding Id}" Margin="2"/>
+                                            --><!--<Button Content="✏️" Click="EditPerson_Click" Tag="{Binding Id}" Margin="2"/>
                                             <Button Content="❌" Click="DeletePerson_Click" Tag="{Binding Id}" Margin="2"/>
-                                            <Button Content="✈️" Click="ShowTrips_Click" Tag="{Binding Id}" Margin="2"/>
+                                            <Button Content="✈️" Click="ShowTrips_Click" Tag="{Binding Id}" Margin="2"/>--><!--
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -47,8 +47,8 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Content="✏️" Click="EditTrip_Click" Tag="{Binding Id}" Margin="2"/>
-                                            <Button Content="❌" Click="DeleteTrip_Click" Tag="{Binding Id}" Margin="2"/>
+                                            --><!--<Button Content="✏️" Click="EditTrip_Click" Tag="{Binding Id}" Margin="2"/>
+                                            <Button Content="❌" Click="DeleteTrip_Click" Tag="{Binding Id}" Margin="2"/>--><!--
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -57,6 +57,6 @@
                     </DataGrid>
                 </StackPanel>
             </TabItem>
-        </TabControl>
+        </TabControl>-->
     </Grid>
 </Window>

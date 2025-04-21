@@ -19,6 +19,8 @@ namespace tasuketewatashinotamashi.Models
         public decimal Salary { get; set; }
 
         public List<BusinessTrip> BusinessTrips { get; set; } = new();
+        public List<City> Citys { get; set; } = new();
+        public List<Country> Countrys { get; set; } = new();
 
 
 
