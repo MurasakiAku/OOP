@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 
 namespace tasuketewatashinotamashi.Models
 {
-    public class BusinessTrip
+    public class Workbook
     {
         [Key]
         public int Id { get; set; }
         public int PersonId { get; set; }
         public Person Person { get; set; }
-        public int CityId { get; set; }
-        public City City { get; set; }
-        public string Purpose { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public decimal Budget { get; set; }
+        public string NameWordbook { get; set; }
     }
 }

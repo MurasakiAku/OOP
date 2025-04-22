@@ -36,23 +36,23 @@ namespace tasuketewatashinotamashi
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(BusinessTrip.City) ||
-                string.IsNullOrWhiteSpace(BusinessTrip.Purpose))
+            //if (string.IsNullOrWhiteSpace(BusinessTrip.) ||
+            //    string.IsNullOrWhiteSpace(BusinessTrip.Purpose))
                 
 
-            {
-                MessageBox.Show("Заполните обязательные поля!");
-                return;
-            }
+            //{
+            //    MessageBox.Show("Заполните обязательные поля!");
+            //    return;
+            //}
 
-            DialogResult = true;
-            Close();
+            //DialogResult = true;
+            //Close();
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-            Close();
-        }
+        //private void Cancel_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DialogResult = false;
+        //    Close();
+        //}
     }
 }

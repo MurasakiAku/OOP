@@ -7,13 +7,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace tasuketewatashinotamashi.Models
 {
-    public  class Country
+    public class Street
     {
         [Key]
         public int Id { get; set; }
-        public string NameCountry { get; set; }
+        public int CityId { get; set; }
+        public City City { get; set; }
+        public string NameStreet { get; set; }
 
-        public List<City> Citys { get; set; } = new();
         public List<Person> Persons { get; set; } = new();
     }
 }
