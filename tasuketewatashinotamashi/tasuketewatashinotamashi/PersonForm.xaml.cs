@@ -36,19 +36,19 @@ namespace tasuketewatashinotamashi
        
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(Person.LastName) ||
-                string.IsNullOrWhiteSpace(Person.FirstName) ||
-                string.IsNullOrWhiteSpace(Person.AndName) ||
+            //if (string.IsNullOrWhiteSpace(Person.LastName) ||
+            //    string.IsNullOrWhiteSpace(Person.FirstName) ||
+            //    string.IsNullOrWhiteSpace(Person.AndName) ||
                 
-                string.IsNullOrWhiteSpace(Person.Position)) 
+            //    string.IsNullOrWhiteSpace(Person.Position)) 
                
-            {
-                MessageBox.Show("Заполните обязательные поля!");
-                return;
-            }
+            //{
+            //    MessageBox.Show("Заполните обязательные поля!");
+            //    return;
+            //}
 
-            DialogResult = true;
-            Close();
+            //DialogResult = true;
+            //Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

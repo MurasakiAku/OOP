@@ -15,7 +15,7 @@ namespace tasuketewatashinotamashi.Models
         public int CityId { get; set; }
         public City City { get; set; }
 
-        public List<Organisation> Organisations { get; set; } = new();
+        public List<Workbook> Workbooks { get; set; } = new();
 
 
     }

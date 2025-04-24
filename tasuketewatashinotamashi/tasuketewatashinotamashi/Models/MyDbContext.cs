@@ -15,6 +15,10 @@ namespace tasuketewatashinotamashi.Models
         public DbSet<Street> Streets { get; set; }
         public DbSet<Speciality> Specialities { get; set; }
         public DbSet<Subunit> Subunits { get; set; }
+        public DbSet<Organisation> Organisations { get; set; }
+        public DbSet<Workbook> Workbooks { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Country> Countries { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=.;Database=MyDB;Trusted_Connection=True;TrustServerCertificate=True;");

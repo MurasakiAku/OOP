@@ -14,5 +14,6 @@ namespace tasuketewatashinotamashi.Models
         public string NamePosition { get; set; }
 
         public List<Person> Persons { get; set; } = new();
+        public List<Workbook> Workbooks { get; set; } = new();
     }
 }
