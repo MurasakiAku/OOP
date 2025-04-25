@@ -1,0 +1,63 @@
+﻿<Window x:Class="tasuketewatashinotamashi.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tasuketewatashinotamashi"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid>
+        <!--<TabControl>
+            <TabItem Header="Сотрудники">
+                <StackPanel>
+                    <Button Content="Добавить сотрудника" Click="AddPerson_Click" Margin="5"/>
+                    <DataGrid x:Name="PersonGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                            <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                            <DataGridTextColumn Header="Должность" Binding="{Binding Position}"/>
+                            <DataGridTemplateColumn Header="Действия">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            -->
+        <!--<Button Content="✏️" Click="EditPerson_Click" Tag="{Binding Id}" Margin="2"/>
+                                            <Button Content="❌" Click="DeletePerson_Click" Tag="{Binding Id}" Margin="2"/>
+                                            <Button Content="✈️" Click="ShowTrips_Click" Tag="{Binding Id}" Margin="2"/>-->
+        <!--
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Командировки">
+                <StackPanel>
+                    <Button Content="Добавить командировку" Click="AddTrip_Click" Margin="5"/>
+                    <DataGrid x:Name="TripsGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Сотрудник" Binding="{Binding Person.LastName}"/>
+                            <DataGridTextColumn Header="Город" Binding="{Binding City}"/>
+                            <DataGridTextColumn Header="Дата начала" Binding="{Binding StartDate, StringFormat=d}"/>
+                            <DataGridTextColumn Header="Дата окончания" Binding="{Binding EndDate, StringFormat=d}"/>
+                            <DataGridTemplateColumn Header="Действия">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            -->
+        <!--<Button Content="✏️" Click="EditTrip_Click" Tag="{Binding Id}" Margin="2"/>
+                                            <Button Content="❌" Click="DeleteTrip_Click" Tag="{Binding Id}" Margin="2"/>-->
+        <!--
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+        </TabControl>-->
+    </Grid>
+</Window>

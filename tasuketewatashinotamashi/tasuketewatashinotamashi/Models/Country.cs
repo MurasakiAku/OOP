@@ -15,5 +15,6 @@ namespace tasuketewatashinotamashi.Models
 
         public List<City> Citys { get; set; } = new();
         public List<Person> Persons { get; set; } = new();
+        public List<BusinessTrip> BusinessTrips { get; set; } = new();
     }
 }

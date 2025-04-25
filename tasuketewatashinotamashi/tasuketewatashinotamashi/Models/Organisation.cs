@@ -12,6 +12,7 @@ namespace tasuketewatashinotamashi.Models
         [Key]
         public int Id { get; set; }
         public string NameOrganisation { get; set; }
+        public char NumberPhone { get; set; }
         public int CityId { get; set; }
         public City City { get; set; }
 

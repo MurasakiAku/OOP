@@ -25,6 +25,7 @@ namespace tasuketewatashinotamashi.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string AndName { get; set; }
+        public string Sex { get; set; }
         public decimal Salary { get; set; }
 
 

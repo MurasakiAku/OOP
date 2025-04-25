@@ -23,5 +23,6 @@ namespace tasuketewatashinotamashi.Models
         {
             optionsBuilder.UseSqlServer(@"Server=.;Database=MyDB;Trusted_Connection=True;TrustServerCertificate=True;");
         }
+
     }
 }

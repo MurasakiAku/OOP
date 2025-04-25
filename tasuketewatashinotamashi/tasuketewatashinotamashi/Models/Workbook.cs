@@ -18,5 +18,10 @@ namespace tasuketewatashinotamashi.Models
         public Organisation Organisation { get; set; }
         public int PositionId { get; set; }
         public Position Position { get; set; }
+        public string NumberOrder { get; set; }
+        public DateTime DateTimeReception { get; set; }
+        public DateTime DateTimeDismissal { get; set; }
+        public DateTime DateTimeOrder { get; set; }
+        public string Dismissal { get; set; }
     }
 }
