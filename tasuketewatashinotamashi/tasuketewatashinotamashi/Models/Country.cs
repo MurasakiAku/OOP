@@ -13,8 +13,8 @@ namespace tasuketewatashinotamashi.Models
         public int Id { get; set; }
         public string NameCountry { get; set; }
 
-        public List<City> Citys { get; set; } = new();
-        public List<Person> Persons { get; set; } = new();
-        public List<BusinessTrip> BusinessTrips { get; set; } = new();
+        public ICollection<City> Cities { get; set; } = new List<City>();
+        public ICollection<Person> Persons { get; set; } = new List<Person>();
+        public ICollection<BusinessTrip> BusinessTrips { get; set; } = new List<BusinessTrip>();
     }
 }

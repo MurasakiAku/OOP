@@ -11,10 +11,10 @@ namespace tasuketewatashinotamashi.Models
     {
         [Key]
         public int Id { get; set; }
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
         public City City { get; set; }
         public string NameStreet { get; set; }
 
-        public List<Person> Persons { get; set; } = new();
+        public ICollection<Person> Persons { get; set; } = new List<Person>();
     }
 }

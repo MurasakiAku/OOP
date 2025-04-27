@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tasuketewatashinotamashi.Models;
 
 namespace tasuketewatashinotamashi.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250427041526_addToDB")]
+    partial class addToDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -346,7 +348,7 @@ namespace tasuketewatashinotamashi.Migrations
                         .WithMany("Persons")
                         .HasForeignKey("SpecialityId");
 
-                    b.HasOne("tasuketewatashinotamashi.Models.Street", "Street")
+                    b.HasOne("tasuketewatashinotamashi.Models.Street", null)
                         .WithMany("Persons")
                         .HasForeignKey("StreetId");
 
@@ -361,8 +363,6 @@ namespace tasuketewatashinotamashi.Migrations
                     b.Navigation("Position");
 
                     b.Navigation("Speciality");
-
-                    b.Navigation("Street");
 
                     b.Navigation("Subunit");
                 });

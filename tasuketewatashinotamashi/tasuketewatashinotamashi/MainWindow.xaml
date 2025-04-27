@@ -16,89 +16,76 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Заголовок -->
-        <Label Grid.Row="0" Content="Employee Management System" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+        <!-- Toolbar -->
+        <ToolBar Grid.Row="0">
+            <Button Content="Add" Click="AddPerson_Click" ToolTip="Add new employee"/>
+            <Button Content="Edit" Click="EditPerson_Click" ToolTip="Edit selected employee"/>
+            <Button Content="Delete" Click="DeletePerson_Click" ToolTip="Delete selected employee"/>
+            <Separator/>
+            <Button Content="Refresh" Click="Refresh_Click" ToolTip="Refresh data"/>
+            <Separator/>
+            <ComboBox Name="FilterComboBox" Width="150" SelectionChanged="FilterComboBox_SelectionChanged">
+                <ComboBoxItem Content="All employees"/>
+                <ComboBoxItem Content="On business trip"/>
+                <ComboBoxItem Content="By organisation"/>
+            </ComboBox>
+        </ToolBar>
 
-        <!-- Основное содержимое -->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
+        <!-- Data Grid -->
+        <DataGrid Grid.Row="1" Name="PersonsGrid" AutoGenerateColumns="False" IsReadOnly="True"
+                 SelectionMode="Single" SelectionChanged="PersonsGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="120"/>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="120"/>
+                <DataGridTextColumn Header="Middle Name" Binding="{Binding MiddleName}" Width="120"/>
+                <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate, StringFormat=\{0:dd.MM.yyyy\}}" Width="100"/>
+                <DataGridTextColumn Header="Position" Binding="{Binding Position.Name}" Width="150"/>
+                <DataGridTextColumn Header="Subunit" Binding="{Binding Position.Subunit.Name}" Width="150"/>
+                <DataGridTextColumn Header="Organisation" Binding="{Binding Position.Subunit.Organisation.Name}" Width="150"/>
+                <DataGridTextColumn Header="Business Trip" Binding="{Binding BusinessTrip.Description}" Width="150"/>
+                <DataGridTextColumn Header="Work Book" Binding="{Binding WorkBook.Number}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
-            <!-- Список сотрудников -->
-            <GroupBox Grid.Column="0" Header="Employees" Margin="5">
-                <DataGrid ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}" AutoGenerateColumns="False" IsReadOnly="True">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding EmployeeId}" Width="Auto"/>
-                        <DataGridTextColumn Header="Name" Binding="{Binding LastName}" Width="*"/>
-                        <DataGridTextColumn Header="Position" Binding="{Binding Position.Title}" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </GroupBox>
+        <!-- Details Panel -->
+        <Border Grid.Row="2" BorderBrush="Gray" BorderThickness="1" Padding="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Форма редактирования -->
-            <GroupBox Grid.Column="1" Header="Employee Details" Margin="5">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <!-- Personal Info -->
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Personal Information" FontWeight="Bold"/>
+                    <TextBlock>
+                        <Run Text="Full Name: "/>
+                        <Run Text="{Binding SelectedItem.LastName, ElementName=PersonsGrid}"/>
+                        <Run Text="{Binding SelectedItem.FirstName, ElementName=PersonsGrid}"/>
+                        <Run Text="{Binding SelectedItem.MiddleName, ElementName=PersonsGrid}"/>
+                    </TextBlock>
+                    <TextBlock Text="{Binding SelectedItem.BirthDate, ElementName=PersonsGrid, StringFormat='Birth Date: \{0:dd.MM.yyyy\}'}"/>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="First Name:"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedEmployee.FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+                    <TextBlock>
+                        <Run Text="Address: "/>
+                        <Run Text="{Binding SelectedItem.Street.Name, ElementName=PersonsGrid}"/>
+                        <Run Text=", "/>
+                        <Run Text="{Binding SelectedItem.Street.City.Name, ElementName=PersonsGrid}"/>
+                    </TextBlock>
+                </StackPanel>
 
-                    <Label Grid.Row="1" Grid.Column="0" Content="Last Name:"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedEmployee.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
-
-                    <Label Grid.Row="2" Grid.Column="0" Content="Middle Name:"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedEmployee.MiddleName, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
-
-                    <Label Grid.Row="3" Grid.Column="0" Content="Birth Date:"/>
-                    <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding SelectedEmployee.BirthDate, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
-
-                    <Label Grid.Row="4" Grid.Column="0" Content="Phone:"/>
-                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedEmployee.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
-
-                    <Label Grid.Row="5" Grid.Column="0" Content="Email:"/>
-                    <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedEmployee.Email, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
-
-                    <Label Grid.Row="6" Grid.Column="0" Content="Position:"/>
-                    <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding Positions}" DisplayMemberPath="Title" SelectedValuePath="PositionId" SelectedValue="{Binding SelectedEmployee.PositionId}" Margin="5"/>
-
-                    <Label Grid.Row="7" Grid.Column="0" Content="Department:"/>
-                    <ComboBox Grid.Row="7" Grid.Column="1" ItemsSource="{Binding Departments}" DisplayMemberPath="Name" SelectedValuePath="DepartmentId" SelectedValue="{Binding SelectedEmployee.DepartmentId}" Margin="5"/>
-
-                    <Label Grid.Row="8" Grid.Column="0" Content="Specialization:"/>
-                    <ComboBox Grid.Row="8" Grid.Column="1" ItemsSource="{Binding Specializations}" DisplayMemberPath="Name" SelectedValuePath="SpecializationId" SelectedValue="{Binding SelectedEmployee.SpecializationId}" Margin="5"/>
-
-                    <!-- Кнопки -->
-                    <StackPanel Grid.Row="9" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-                        <Button Content="Add" Command="{Binding AddCommand}" Width="80" Margin="5"/>
-                        <Button Content="Update" Command="{Binding UpdateCommand}" Width="80" Margin="5"/>
-                        <Button Content="Delete" Command="{Binding DeleteCommand}" Width="80" Margin="5"/>
-                        <Button Content="Clear" Command="{Binding ClearCommand}" Width="80" Margin="5"/>
-                    </StackPanel>
-                </Grid>
-            </GroupBox>
-        </Grid>
-
-        <!-- Статус бар -->
-        <StatusBar Grid.Row="2">
-            <StatusBarItem Content="Ready"/>
-        </StatusBar>
+                <!-- Work Info -->
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Work Information" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedItem.Position.Name, ElementName=PersonsGrid, StringFormat='Position: \{0\}'}"/>
+                    <TextBlock Text="{Binding SelectedItem.Position.Subunit.Name, ElementName=PersonsGrid, StringFormat='Subunit: \{0\}'}"/>
+                    <TextBlock Text="{Binding SelectedItem.Position.Subunit.Organisation.Name, ElementName=PersonsGrid, StringFormat='Organisation: \{0\}'}"/>
+                    <TextBlock Text="{Binding SelectedItem.WorkBook.Number, ElementName=PersonsGrid, StringFormat='Work Book: \{0\}'}"/>
+                    <TextBlock Text="{Binding SelectedItem.WorkBook.Speciality.Name, ElementName=PersonsGrid, StringFormat='Speciality: \{0\}'}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
+
 </Window>

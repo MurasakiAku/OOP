@@ -11,17 +11,18 @@ namespace tasuketewatashinotamashi.Models
     {
         [Key]
         public int Id { get; set; }
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
         public Person Person { get; set; }
         public string NameWordbook { get; set; }
-        public int OrganisationId { get; set; }
+        public int? OrganisationId { get; set; }
         public Organisation Organisation { get; set; }
-        public int PositionId { get; set; }
+        public int? PositionId { get; set; }
         public Position Position { get; set; }
         public string NumberOrder { get; set; }
         public DateTime DateTimeReception { get; set; }
         public DateTime DateTimeDismissal { get; set; }
         public DateTime DateTimeOrder { get; set; }
         public string Dismissal { get; set; }
+
     }
 }

@@ -11,102 +11,102 @@ using tasuketewatashinotamashi.Models;
 
 namespace tasuketewatashinotamashi
 {
-    public class PersonViewModel : INotifyPropertyChanged
-    {
-        private readonly IPersonRepository _repository;
-        private ObservableCollection<Person> _employees;
-        private Person _selectedEmployee;
+    //public class PersonViewModel : INotifyPropertyChanged
+    //{
+    //    //private readonly IPersonRepository _repository;
+    //    //private ObservableCollection<Person> _employees;
+    //    //private Person _selectedEmployee;
 
-        public ObservableCollection<Person> Persons
-        {
-            get => _person;
-            set
-            {
-                _employees = value;
-                OnPropertyChanged();
-            }
-        }
+    //    public ObservableCollection<Person> Persons
+    //    {
+    //        //get => _person;
+    //        //set
+    //        //{
+    //        //    _employees = value;
+    //        //    OnPropertyChanged();
+    //        //}
+    //    }
 
-        public Person SelectedPerson
-        {
-            get => _selectedPerson;
-            set
-            {
-                _selectedPerson = value;
-                OnPropertyChanged();
-            }
-        }
+    //    public Person SelectedPerson
+    //    {
+    //        //get => _selectedPerson;
+    //        //set
+    //        //{
+    //        //    _selectedPerson = value;
+    //        //    OnPropertyChanged();
+    //        //}
+    //    }
 
-        public ObservableCollection<Position> Positions { get; }
-        public ObservableCollection<Organisation> Organisations { get; }
-        public ObservableCollection<Speciality> Specialities { get; }
+    //    public ObservableCollection<Position> Positions { get; }
+    //    public ObservableCollection<Organisation> Organisations { get; }
+    //    public ObservableCollection<Speciality> Specialities { get; }
 
-        public ICommand AddCommand { get; }
-        public ICommand UpdateCommand { get; }
-        public ICommand DeleteCommand { get; }
-        public ICommand ClearCommand { get; }
+    //    public ICommand AddCommand { get; }
+    //    public ICommand UpdateCommand { get; }
+    //    public ICommand DeleteCommand { get; }
+    //    public ICommand ClearCommand { get; }
 
-        public PersonViewModel(IPersonRepository repository)
-        {
-            _repository = repository;
-            LoadEmployees();
+    //    //public PersonViewModel(IPersonRepository repository)
+    //    //{
+    //    //    _repository = repository;
+    //    //    LoadEmployees();
 
-            Positions = new ObservableCollection<Position>(_repository.GetAllPositions());
-            Organisations = new ObservableCollection<Organisation>(_repository.GetAllDepartments());
-            Specialities = new ObservableCollection<Speciality>(_repository.GetAllSpecializations());
+    //    //    Positions = new ObservableCollection<Position>(_repository.GetAllPositions());
+    //    //    Organisations = new ObservableCollection<Organisation>(_repository.GetAllDepartments());
+    //    //    Specialities = new ObservableCollection<Speciality>(_repository.GetAllSpecializations());
 
-            AddCommand = new RelayCommand(AddPerson);
-            UpdateCommand = new RelayCommand(UpdatePerson, CanExecute);
-            DeleteCommand = new RelayCommand(DeletePerson, CanExecute);
-            ClearCommand = new RelayCommand(ClearFields);
-        }
+    //    //    AddCommand = new RelayCommand(AddPerson);
+    //    //    UpdateCommand = new RelayCommand(UpdatePerson, CanExecute);
+    //    //    DeleteCommand = new RelayCommand(DeletePerson, CanExecute);
+    //    //    ClearCommand = new RelayCommand(ClearFields);
+    //    //}
 
-        private void LoadEmployees()
-        {
-            Persons = new ObservableCollection<Person>(_repository.GetAll());
-        }
+    //    //private void LoadEmployees()
+    //    //{
+    //    //    Persons = new ObservableCollection<Person>(_repository.GetAll());
+    //    //}
 
-        private void AddEmployee(object obj)
-        {
-            if (SelectedPerson == null) return;
+    //    //private void AddEmployee(object obj)
+    //    //{
+    //    //    if (SelectedPerson == null) return;
 
-            _repository.Add(SelectedPerson);
-            LoadEmployees();
-            ClearFields(null);
-        }
+    //    //    _repository.Add(SelectedPerson);
+    //    //    LoadEmployees();
+    //    //    ClearFields(null);
+    //    //}
 
-        private void UpdateEmployee(object obj)
-        {
-            if (SelectedPerson == null) return;
+    //    //private void UpdateEmployee(object obj)
+    //    //{
+    //    //    if (SelectedPerson == null) return;
 
-            _repository.Update(SelectedPerson);
-            LoadEmployees();
-        }
+    //    //    _repository.Update(SelectedPerson);
+    //    //    LoadEmployees();
+    //    //}
 
-        private void DeleteEmployee(object obj)
-        {
-            if (SelectedPerson == null) return;
+    //    //private void DeleteEmployee(object obj)
+    //    //{
+    //    //    if (SelectedPerson == null) return;
 
-            _repository.Delete(SelectedPerson.PersonId);
-            LoadEmployees();
-            ClearFields(null);
-        }
+    //    //    _repository.Delete(SelectedPerson.PersonId);
+    //    //    LoadEmployees();
+    //    //    ClearFields(null);
+    //    //}
 
-        private void ClearFields(object obj)
-        {
-            SelectedPerson = new Person();
-        }
+    //    //private void ClearFields(object obj)
+    //    //{
+    //    //    SelectedPerson = new Person();
+    //    //}
 
-        private bool CanExecute(object obj)
-        {
-            return SelectedPerson != null && SelectedPerson.PersonId != 0;
-        }
+    //    //private bool CanExecute(object obj)
+    //    //{
+    //    //    return SelectedPerson != null && SelectedPerson.PersonId != 0;
+    //    //}
 
-        public event PropertyChangedEventHandler PropertyChanged;
+    //    //public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
+    //    //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    //    //{
+    //    //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //    //}
+    //}
 }

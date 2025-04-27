@@ -23,6 +23,17 @@ namespace tasuketewatashinotamashi.Models
         {
             optionsBuilder.UseSqlServer(@"Server=.;Database=MyDB;Trusted_Connection=True;TrustServerCertificate=True;");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Настройка связей и индексов
+            modelBuilder.Entity<Person>()
+                .HasIndex(p => new { p.LastName, p.FirstName, p.AndName });
 
+            modelBuilder.Entity<Organisation>()
+                .HasIndex(o => o.TaxNumber)
+                .IsUnique();
+        }
     }
+
 }
+

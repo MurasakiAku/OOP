@@ -13,7 +13,7 @@ namespace tasuketewatashinotamashi.Models
         public int Id { get; set; }
         public string NamePosition { get; set; }
 
-        public List<Person> Persons { get; set; } = new();
-        public List<Workbook> Workbooks { get; set; } = new();
+        public ICollection<Person> Persons { get; set; } = new List<Person>();
+        public ICollection<Workbook> Workbooks { get; set; } = new List<Workbook>();
     }
 }
