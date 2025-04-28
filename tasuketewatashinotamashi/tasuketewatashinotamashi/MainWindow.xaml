@@ -8,7 +8,7 @@
         mc:Ignorable="d" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         d:DesignHeight="600" d:DesignWidth="900"
-        Title="MainWindow">
+        Title="Персонал">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,11 +18,11 @@
 
         <!-- Toolbar -->
         <ToolBar Grid.Row="0">
-            <Button Content="Add" Click="AddPerson_Click" ToolTip="Add new employee"/>
-            <Button Content="Edit" Click="EditPerson_Click" ToolTip="Edit selected employee"/>
-            <Button Content="Delete" Click="DeletePerson_Click" ToolTip="Delete selected employee"/>
+            <Button Content="Добавить" Click="AddPerson_Click" ToolTip="Add new employee"/>
+            <Button Content="Редактировать" Click="EditPerson_Click" ToolTip="Edit selected employee"/>
+            <Button Content="Удалить" Click="DeletePerson_Click" ToolTip="Delete selected employee"/>
             <Separator/>
-            <Button Content="Refresh" Click="Refresh_Click" ToolTip="Refresh data"/>
+            <Button Content="Обновить" Click="Refresh_Click" ToolTip="Refresh data"/>
             <Separator/>
             <ComboBox Name="FilterComboBox" Width="150" SelectionChanged="FilterComboBox_SelectionChanged">
                 <ComboBoxItem Content="All employees"/>
@@ -36,15 +36,15 @@
                  SelectionMode="Single" SelectionChanged="PersonsGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
-                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="120"/>
-                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="120"/>
-                <DataGridTextColumn Header="Middle Name" Binding="{Binding MiddleName}" Width="120"/>
-                <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate, StringFormat=\{0:dd.MM.yyyy\}}" Width="100"/>
-                <DataGridTextColumn Header="Position" Binding="{Binding Position.Name}" Width="150"/>
-                <DataGridTextColumn Header="Subunit" Binding="{Binding Position.Subunit.Name}" Width="150"/>
-                <DataGridTextColumn Header="Organisation" Binding="{Binding Position.Subunit.Organisation.Name}" Width="150"/>
-                <DataGridTextColumn Header="Business Trip" Binding="{Binding BusinessTrip.Description}" Width="150"/>
-                <DataGridTextColumn Header="Work Book" Binding="{Binding WorkBook.Number}" Width="100"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="120"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="120"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding AndName}" Width="120"/>
+                <DataGridTextColumn Header="Дата Рождения" Binding="{Binding BirthDate, StringFormat=\{0:dd.MM.yyyy\}}" Width="100"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Position.Name}" Width="150"/>
+                <DataGridTextColumn Header="Подразделение" Binding="{Binding Position.Subunit.Name}" Width="150"/>
+                <DataGridTextColumn Header="Организация" Binding="{Binding Position.Subunit.Organisation.Name}" Width="150"/>
+                <DataGridTextColumn Header="Бизнес поездки" Binding="{Binding BusinessTrip.Description}" Width="150"/>
+                <DataGridTextColumn Header="Трудовая книжка" Binding="{Binding WorkBook.Number}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -58,17 +58,17 @@
 
                 <!-- Personal Info -->
                 <StackPanel Grid.Column="0">
-                    <TextBlock Text="Personal Information" FontWeight="Bold"/>
+                    <TextBlock Text="Информация сотрудника" FontWeight="Bold"/>
                     <TextBlock>
-                        <Run Text="Full Name: "/>
+                        <Run Text="Полное ФИО: "/>
                         <Run Text="{Binding SelectedItem.LastName, ElementName=PersonsGrid}"/>
                         <Run Text="{Binding SelectedItem.FirstName, ElementName=PersonsGrid}"/>
-                        <Run Text="{Binding SelectedItem.MiddleName, ElementName=PersonsGrid}"/>
+                        <Run Text="{Binding SelectedItem.AndName, ElementName=PersonsGrid}"/>
                     </TextBlock>
                     <TextBlock Text="{Binding SelectedItem.BirthDate, ElementName=PersonsGrid, StringFormat='Birth Date: \{0:dd.MM.yyyy\}'}"/>
 
                     <TextBlock>
-                        <Run Text="Address: "/>
+                        <Run Text="Адрес: "/>
                         <Run Text="{Binding SelectedItem.Street.Name, ElementName=PersonsGrid}"/>
                         <Run Text=", "/>
                         <Run Text="{Binding SelectedItem.Street.City.Name, ElementName=PersonsGrid}"/>
@@ -77,7 +77,7 @@
 
                 <!-- Work Info -->
                 <StackPanel Grid.Column="1">
-                    <TextBlock Text="Work Information" FontWeight="Bold"/>
+                    <TextBlock Text="Рабочая информация" FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedItem.Position.Name, ElementName=PersonsGrid, StringFormat='Position: \{0\}'}"/>
                     <TextBlock Text="{Binding SelectedItem.Position.Subunit.Name, ElementName=PersonsGrid, StringFormat='Subunit: \{0\}'}"/>
                     <TextBlock Text="{Binding SelectedItem.Position.Subunit.Organisation.Name, ElementName=PersonsGrid, StringFormat='Organisation: \{0\}'}"/>

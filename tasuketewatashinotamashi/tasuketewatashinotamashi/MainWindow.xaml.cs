@@ -41,32 +41,31 @@ namespace tasuketewatashinotamashi
         {
             _db.Persons
                 .Include(p => p.Street).ThenInclude(s => s.City).ThenInclude(c => c.Country)
-                //.Include(p => p.Position).ThenInclude(pos => pos.Workbooks).ThenInclude(sub => sub.Organisation)
                 .Load();
 
             PersonsGrid.ItemsSource = _db.Persons.Local.ToObservableCollection();
         }
         private void AddPerson_Click(object sender, RoutedEventArgs e)
         {
-            //var dialog = new PersonEditDialog();
-            //if (dialog.ShowDialog() == true)
-            //{
-            //    _db.Persons.Add(dialog.Person);
-            //    _db.SaveChanges();
-            //    LoadData();
-            //}
+            var dialog = new PersonEditDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                _db.Persons.Add(dialog.Person);
+                _db.SaveChanges();
+                LoadData();
+            }
         }
 
         private void EditPerson_Click(object sender, RoutedEventArgs e)
         {
             if (PersonsGrid.SelectedItem is Person selectedPerson)
             {
-                //var dialog = new PersonEditDialog(selectedPerson);
-                //if (dialog.ShowDialog() == true)
-                //{
-                //    _db.SaveChanges();
-                //    LoadData();
-                //}
+                var dialog = new PersonEditDialog(selectedPerson);
+                if (dialog.ShowDialog() == true)
+                {
+                    _db.SaveChanges();
+                    LoadData();
+                }
             }
             else
             {
@@ -111,10 +110,10 @@ namespace tasuketewatashinotamashi
             }
             else if (FilterComboBox.SelectedIndex == 1)
             {
-                //PersonsGrid.ItemsSource = _db.Persons
-                //    .Local
-                //    .Where(p => p.BusinessTripId != null)
-                //    .ToList();
+                PersonsGrid.ItemsSource = _db.Persons
+                    .Local
+                    .Where(p => p.BusinessTripId != null)
+                    .ToList();
             }
         }
 

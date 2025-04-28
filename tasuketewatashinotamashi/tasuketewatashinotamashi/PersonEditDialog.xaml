@@ -1,0 +1,113 @@
+﻿<Window x:Class="tasuketewatashinotamashi.PersonEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tasuketewatashinotamashi"
+        mc:Ignorable="d"
+        Title="Редактирование персонала" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Personal Information -->
+        <Label Grid.Row="0" Grid.Column="0" Content="Фамилия:"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Person.FirstName}" Margin="5"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Имя:"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Person.LastName}" Margin="5"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Отчество:"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Person.AndName}" Margin="5"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Дата Рождения:"/>
+        <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding Person.BirthDate}" Margin="5"/>
+
+        <!-- Address Information -->
+        <Label Grid.Row="4" Grid.Column="0" Content="Страна:"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Name="CountryComboBox" DisplayMemberPath="Name"
+                  SelectedValue="{Binding Person.Street.City.Country.Id}" SelectedValuePath="Id" Margin="5"/>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="Город:"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" Name="CityComboBox" DisplayMemberPath="Name"
+                  SelectedValue="{Binding Person.Street.City.Id}" SelectedValuePath="Id" Margin="5"/>
+
+        <Label Grid.Row="6" Grid.Column="0" Content="Улица:"/>
+        <ComboBox Grid.Row="6" Grid.Column="1" Name="StreetComboBox" DisplayMemberPath="Name"
+                  SelectedValue="{Binding Person.StreetId}" SelectedValuePath="Id" Margin="5"/>
+
+        <!-- Work Information -->
+        <TabControl Grid.Row="8" Grid.ColumnSpan="2">
+            <TabItem Header="Должность">
+                <StackPanel>
+                    <Label Content="Организация:"/>
+                    <ComboBox Name="OrganisationComboBox" DisplayMemberPath="Name"
+                              SelectedValue="{Binding Person.Position.Subunit.Organisation.Id}" SelectedValuePath="Id" Margin="5"/>
+
+                    <Label Content="Подразделение:"/>
+                    <ComboBox Name="SubunitComboBox" DisplayMemberPath="Name"
+                              SelectedValue="{Binding Person.Position.Subunit.Id}" SelectedValuePath="Id" Margin="5"/>
+
+                    <Label Content="Должность:"/>
+                    <ComboBox Name="PositionComboBox" DisplayMemberPath="Name"
+                              SelectedValue="{Binding Person.PositionId}" SelectedValuePath="Id" Margin="5"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Трудовая книжка">
+                <StackPanel>
+                    <Label Content="Номер трудовой:"/>
+                    <TextBox Text="{Binding Person.WorkBook.Number}" Margin="5"/>
+
+                    <Label Content="Дата:"/>
+                    <DatePicker SelectedDate="{Binding Person.WorkBook.HireDate}" Margin="5"/>
+
+                    <Label Content="Специальность:"/>
+                    <ComboBox Name="SpecialityComboBox" DisplayMemberPath="Name"
+                              SelectedValue="{Binding Person.WorkBook.Speciality.Id}" SelectedValuePath="Id" Margin="5"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Бизнес поездки">
+                <StackPanel>
+                    <CheckBox Name="BusinessTripCheckBox" Content="Бизнес поездки" Margin="5"/>
+
+                    <StackPanel IsEnabled="{Binding ElementName=BusinessTripCheckBox, Path=IsChecked}">
+                        <Label Content="Назначение:"/>
+                        <TextBox Text="{Binding Person.BusinessTrip.Description}" Margin="5"/>
+
+                        <Label Content="Начальная дата:"/>
+                        <DatePicker SelectedDate="{Binding Person.BusinessTrip.StartDate}" Margin="5"/>
+
+                        <Label Content="Конечная дата:"/>
+                        <DatePicker SelectedDate="{Binding Person.BusinessTrip.EndDate}" Margin="5"/>
+
+                        <Label Content="Организация:"/>
+                        <ComboBox Name="BusinessTripOrganisationComboBox" DisplayMemberPath="Name"
+                                  SelectedValue="{Binding Person.BusinessTrip.Organisation.Id}" SelectedValuePath="Id" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="9" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Click="OK_Click" Width="80" Margin="5"/>
+            <Button Content="Закрыть" Click="Cancel_Click" Width="80" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>
